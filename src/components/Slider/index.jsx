@@ -6,6 +6,7 @@ const Slider = React.forwardRef(
   ({ items = [], activeIndex = 0, centerMode, magnifiedIndex = 0, activeSlideCSS = "scale-75", ...props }, ref) => {
     const isSmall = (index) => {
       if (props?.activeIndex + magnifiedIndex >= items?.length) {
+        console.log(index !== props?.activeIndex + magnifiedIndex - items?.length)
         return index !== props?.activeIndex + magnifiedIndex - items?.length;
       } else {
         return index !== props.activeIndex + magnifiedIndex;
@@ -23,7 +24,6 @@ const Slider = React.forwardRef(
           return React.cloneElement(child);
         })
       : items;
-
     return (
       <AliceCarousel
         items={slideItems}

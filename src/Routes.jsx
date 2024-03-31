@@ -32,7 +32,7 @@ const ProjectRoutes = () => {
         { path: "/", element: <Homepage /> },
         { path: "cart", element: <Cart /> },
         { path: "shop", element: <Shop /> },
-        { path: "shopdetaildescription", element: <ShopDetailDescription /> },
+        { path: "/shopdetaildescription/:id", element: <ShopDetailDescription /> },
         { path: "detailreview", element: <DetailReview /> },
         { path: "checkout", element: <Checkout /> },
         { path: "wishlist", element: <Wishlist /> },

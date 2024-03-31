@@ -8,4 +8,7 @@ import { SelectBox } from "./SelectBox";
 import { RatingBar } from "./RatingBar";
 import { CheckBox } from "./CheckBox";
 import { TextArea } from "./TextArea";
-export { Img, Text, Heading, Input, Button, Slider, SelectBox, RatingBar, CheckBox, TextArea };
+import Product from "./Product";
+import ProductServices from "./Product_services";
+import SingleBlog from "./SingleBlog";
+export { Img, Text, Heading, Input, Button, Slider, SelectBox, RatingBar, CheckBox, TextArea, Product, ProductServices, SingleBlog };

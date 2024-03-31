@@ -1,13 +1,28 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { Text, Button, Img, Heading, Input, Slider, RatingBar } from "../../components";
+import { useParams, Link } from "react-router-dom";
+import { Products_list_1 } from "utils/data";
+import image_1 from "../../../public/images/img_sam_moghadam_kh.png"
+import image_2 from "../../../public/images/img_image_2.png"
+import minus_icon from "../../../public/images/img_bx_minus_circle.svg"
+import plus_icon from "../../../public/images/img_bx_plus_circle_1_blue_gray_900_01.svg"
+import wishlist from "../../../public/images/img_frame_48095996.svg"
 
 export default function ShopDetailDescriptionPage() {
   const [sliderState, setSliderState] = React.useState(0);
   const sliderRef = React.useRef(null);
   const [sliderState1, setSliderState1] = React.useState(0);
   const sliderRef1 = React.useRef(null);
+  const { id } = useParams();
+  
+  // function for getting particular product
+  const findProductById = (id) => {
+    return Products_list_1.find((product) => product.id === id)
+  }
 
+  const product = findProductById(id);
+  console.log(product.price)
   return (
     <>
       <Helmet>
@@ -19,14 +34,14 @@ export default function ShopDetailDescriptionPage() {
           <div className="flex flex-row justify-center w-full pt-[75px] px-14 md:pt-5 md:px-5">
             <div className="flex flex-row md:flex-col justify-start w-full gap-[47px] md:gap-5 max-w-[1290px]">
               <Img
-                src="images/img_rectangle_1475.png"
+                src={product.image}
                 alt="image_one"
                 className="w-[49%] md:w-full md:h-[595px] object-cover"
               />
               <div className="flex flex-col items-center justify-start w-[49%] md:w-full gap-[30px]">
                 <div className="flex flex-col items-start justify-start w-full gap-8">
                   <Heading size="2xl" as="h1" className="tracking-[-0.50px]">
-                    Complete set of sofa, pillows and bed sheets
+                    {product.tittle}
                   </Heading>
                   <div className="flex flex-row justify-start items-center gap-[15px]">
                     <RatingBar
@@ -42,7 +57,7 @@ export default function ShopDetailDescriptionPage() {
                     </Text>
                   </div>
                   <Heading size="3xl" as="h2" className="!text-blue_gray-900_01 tracking-[-0.50px]">
-                    $ 75.00
+                    {product?.price}
                   </Heading>
                   <div className="flex flex-col items-start justify-start w-full gap-[19px]">
                     <Heading size="md" as="h3" className="tracking-[-0.50px]">
@@ -72,12 +87,12 @@ export default function ShopDetailDescriptionPage() {
                 <div className="flex flex-row justify-start w-full">
                   <div className="flex flex-row justify-between items-center w-[55%]">
                     <div className="flex flex-row justify-start items-center gap-[15px] p-[9px] border-black-900 border border-solid">
-                      <Img src="images/img_bx_minus_circle.svg" alt="image_two" className="h-[24px] w-[24px] ml-1" />
+                      <Img src={minus_icon} alt="image_two" className="h-[24px] w-[24px] ml-1" />
                       <Text size="lg" as="p" className="!text-black-900 tracking-[-0.50px]">
                         1
                       </Text>
                       <Img
-                        src="images/img_bx_plus_circle_1_blue_gray_900_01.svg"
+                        src={plus_icon}
                         alt="image_three"
                         className="h-[24px] w-[24px]"
                       />
@@ -91,7 +106,7 @@ export default function ShopDetailDescriptionPage() {
                       Add to Cart
                     </Button>
                     <Button color="blue_gray_100" size="3xl" variant="outline" shape="square" className="w-[43px]">
-                      <Img src="images/img_frame_48095996.svg" />
+                      <Img src={wishlist} />
                     </Button>
                   </div>
                 </div>
@@ -109,9 +124,11 @@ export default function ShopDetailDescriptionPage() {
                   </Heading>
                   <div className="h-[6px] w-full bg-blue_gray-900_01" />
                 </div>
+                <Link to ="/detailreview">
                 <Heading size="xl" as="h3" className="!text-gray-500 tracking-[-0.50px] !font-josefinsans">
                   Review
                 </Heading>
+                </Link>
               </div>
               <Text size="md" as="p" className="!text-gray-500 tracking-[-0.50px] leading-[35px]">
                 <>
@@ -165,7 +182,7 @@ export default function ShopDetailDescriptionPage() {
                         </Button>
                       </div>
                       <Img
-                        src="images/img_sam_moghadam_kh.png"
+                        src={image_1}
                         alt="sammoghadamkh"
                         className="w-[32%] md:h-auto sm:w-full mr-[19px] object-cover"
                       />
@@ -202,10 +219,10 @@ export default function ShopDetailDescriptionPage() {
                 items={[...Array(12)].map(() => (
                   <React.Fragment key={Math.random()}>
                     <div className="flex flex-col items-center justify-start gap-[15px] mx-2.5">
-                      <div className="flex flex-col items-center justify-start w-full">
+                    <div className="flex flex-col items-center justify-start w-full">
                         <div className="h-[400px] w-full relative">
                           <Img
-                            src="images/img_image_10.png"
+                            src={image_2}
                             alt="image_one"
                             className="justify-center h-[400px] w-full sm:w-full left-0 bottom-0 right-0 top-0 m-auto object-cover absolute"
                           />
